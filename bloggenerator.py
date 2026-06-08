@@ -1,6 +1,10 @@
 import google.generativeai as genai 
 import streamlit as st
-genai.configure(api_key="AIzaSyBmLh7JsgdLxIkcNU1kNdGXjatkjxRvLPk")
+import os
+from dotenv import load_dotenv
+load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
 model=genai.GenerativeModel("gemini-2.5-flash")
 st.title("Blog Generator")
 prompt=st.text_input("Enter your Blog Topic here..")
